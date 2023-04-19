@@ -5,7 +5,7 @@ throughout the parser.
 
 import re
 
-class BaseConditionalStatement:
+class BaseConditional:
     '''
     Base class for rendering string representations
     of conditional statements.

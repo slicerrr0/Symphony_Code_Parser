@@ -1,9 +1,9 @@
 '''
 Contains classes that represent the syntactic structure of conditional statements.
 '''
-from ..base import BaseConditionalStatement
+from ..base import BaseConditional
 
-class QuantConnectConditionalStatement(BaseConditionalStatement):
+class QuantConnectConditional(BaseConditional):
     '''
     Renders string representations of conditional statements
     for use in QuantConnect python algorithms.

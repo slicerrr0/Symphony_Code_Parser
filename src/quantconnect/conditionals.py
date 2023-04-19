@@ -2,7 +2,6 @@
 Contains classes that represent the syntactic structure of conditional statements.
 '''
 from ..base import BaseConditionalStatement
-import re
 
 class QuantConnectConditionalStatement(BaseConditionalStatement):
     '''

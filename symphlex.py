@@ -5,13 +5,12 @@ reserved = {
     'if': 'IF',
     'filter': 'FILTER',
     'asset': 'ASSET',
+    'rebalance-threshold': 'REBALANCE',
 }
 
 # Required list of token names
 tokens = (
-    'NAME',
-    'REBALANCE',
-    'TICKER',
+    'WORD',
     'NUMBER',
     'GTE',
     'LTE',
@@ -22,7 +21,10 @@ tokens = (
     'RPAREN',
     'LBRACKET',
     'RBRACKET',
+    'LBRACE',
+    'RBRACE',
     'QUOTATION',
+    'COLON',
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -34,7 +36,10 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACKET = r'\['
 t_RBRACKET = r'\]'
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
 t_QUOTATION = r'"'
+t_COLON = r':'
 
 # Regular expression for numbers
 def t_NUMBER(t):
@@ -42,8 +47,11 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
-def t_NAME(t):
-    return
+# Regular expression for word-like strings
+def t_WORD(t):
+    r'[a-zA-Z\-]+'
+    t.type = reserved.get(t.value,'WORD')    # Check for reserved words
+    return t
 
 # Define a rule so we can track line numbers
 def t_newline(t):

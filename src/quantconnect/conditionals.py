@@ -54,7 +54,7 @@ class QuantConnectConditional(BaseConditional):
              ''')
         if side != 'L' and side != 'R':
              raise ValueError(f'''
-                Parameter side must be either `"L"` or `"R"`.
+                Parameter `side` must be either `"L"` or `"R"`.
                 Function received {side} instead
              ''')
         

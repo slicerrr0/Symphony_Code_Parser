@@ -1,6 +1,6 @@
 '''
 Contains the base implementation of classes used
-throughout the parser.
+to represent expressions in an Abstract Syntax Tree.
 '''
 
 import re

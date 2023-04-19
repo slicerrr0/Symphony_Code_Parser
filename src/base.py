@@ -56,6 +56,8 @@ class BaseConditionalStatement:
 
         Conversely, if this statement is evaluated as `False`, then all arguments
         in parameter `*args` must be truthy boolean values.
+
+        A `ValueErrror` is raised if the above conditions are not satisfied.
         '''
         if self.rhs_value is not None and any(*args):
             raise ValueError('''

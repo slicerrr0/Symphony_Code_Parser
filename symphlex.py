@@ -32,6 +32,7 @@ tokens = (
     'RBRACE',
     'QUOTATION',
     'COLON',
+    'SPACE',
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -47,6 +48,7 @@ t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_QUOTATION = r'"'
 t_COLON = r':'
+t_SPACE = r' '
 
 
 

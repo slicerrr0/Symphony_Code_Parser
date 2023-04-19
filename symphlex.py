@@ -4,15 +4,18 @@ import ply.lex as lex
 reserved = {
     'if': 'IF',
     'filter': 'FILTER',
+    'select-top': 'SELECT_TOP',
+    'select-bottom': 'SELECT_BOTTOM',
     'asset': 'ASSET',
     'rebalance-threshold': 'REBALANCE',
     'weight-equal': 'WEIGHT_EQUAL',
     'weight-specified': 'WEIGHT_SPECIFIED',
+    'group': 'GROUP',
+    'defsymphony': 'SYMPHONY',
 }
 
 # Required list of token names
 tokens = (
-    'NAME',
     'INDICATOR',
     'TICKER',
     'INTEGER',
@@ -21,7 +24,6 @@ tokens = (
     'LTE',
     'GT',
     'LT',
-    'INDICATOR',
     'LPAREN',
     'RPAREN',
     'LBRACKET',
@@ -45,6 +47,8 @@ t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_QUOTATION = r'"'
 t_COLON = r':'
+
+
 
 # Regular expression for integers
 def t_INTEGER(t):
@@ -71,19 +75,8 @@ def t_INDICATOR(t):
 
 # Regular expression for ticker strings
 def t_TICKER(t):
-    r'"[A-Z]+"'
+    r'[A-Z]+'
     t.type = reserved.get(t.value, 'TICKER')    # Check for reserved words
-    if t.type == 'TICKER':
-        # Remove surrounding double quotes
-        t.value = t.value[1:len(t.value)-1]
-    return t
-
-# Regular expression for symphony name
-def t_NAME(t):
-    r'"[a-zA-Z0-9 ]+"'
-    t.type = reserved.get(t.value,'NAME')   # Check for reserved words
-    if t.type == 'NAME':
-        t.value = t.value[1:len(t.value)-1]
     return t
 
 # Define a rule so we can track line numbers

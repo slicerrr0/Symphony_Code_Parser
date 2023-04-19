@@ -43,7 +43,7 @@ class BaseConditionalStatement:
             {self.comparator} {self.rhs_period} {self.rhs_indicator} value of {self.rhs_ticker}
             {self.rhs_value}
         ''')
-    def _validate_constructor_arguments(self, *args):
+    def _validate_constructor_arguments(self, *args) -> None:
         '''
         Private method for validating constructor arguments to ensure this class
         instance does not have an improper syntactic structure.

@@ -203,7 +203,8 @@ class BaseConditional(BaseNode):
             self, 
             comparator: BaseComparator, 
             lhs: BaseLeftConditional,
-            rhs: BaseRightConditional
+            rhs: BaseRightConditional,
+            _else=False
         ) -> None:
         self.comparator = comparator.getComparator()
         
@@ -212,6 +213,7 @@ class BaseConditional(BaseNode):
         self.lhs_period = lhs.indicator.getPeriod()
         
         self.rhs_value = rhs.getValue()
+        self._else = _else
         if not rhs.isFixed():
             self.rhs_ticker = rhs.ticker.getTicker()
             self.rhs_indicator = rhs.indicator.getIndicator()

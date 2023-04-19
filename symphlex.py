@@ -32,7 +32,6 @@ tokens = (
     'RBRACE',
     'QUOTATION',
     'COLON',
-    'SPACE',
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -48,7 +47,6 @@ t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_QUOTATION = r'"'
 t_COLON = r':'
-t_SPACE = r' '
 
 
 
@@ -86,8 +84,8 @@ def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-# A string containing ignored characters (tabs)
-t_ignore  = '\t'
+# A string containing ignored characters (spaces and tabs)
+t_ignore  = ' \t'
 
 # Error handling rule
 def t_error(t):

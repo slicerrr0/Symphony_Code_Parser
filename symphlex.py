@@ -3,7 +3,6 @@ import ply.lex as lex
 # Identifier matching for reserved words
 reserved = {
     'if': 'IF',
-    'else': 'ELSE',
     'filter': 'FILTER',
     'asset': 'ASSET',
 }

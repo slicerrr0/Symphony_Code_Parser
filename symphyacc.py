@@ -2,7 +2,7 @@ import ply.yacc as yacc
 
 from .symphlex import tokens
 
-# Grammar rules
+### Grammar rules ###
 
 # Identifies 'symphony' terminals
 def p_symphony_expr(p):

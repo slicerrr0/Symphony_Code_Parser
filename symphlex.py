@@ -20,6 +20,7 @@ tokens = (
     'TICKER',
     'INTEGER',
     'FLOAT',
+    'PERCENT',
     'GTE',
     'LTE',
     'GT',
@@ -66,6 +67,14 @@ def t_FLOAT(t):
     r'[0-9.]+'
     t.value = float(t.value)
     return t
+
+# Regular expression for percentages
+def t_PERCENT(t):
+    r'\d+%'
+    # Strip trailing '%' from t.value, then convert it to a float and divide it by 100
+    t.value = float(t.value[0:len(t.value)-1]) / 100
+    return t
+
 
 # Regular expression for indicator strings
 def t_INDICATOR(t):

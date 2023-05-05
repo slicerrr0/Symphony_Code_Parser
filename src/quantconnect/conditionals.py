@@ -1,7 +1,7 @@
 '''
 Contains classes that represent the syntactic structure of conditional statements.
 '''
-from ..base import BaseConditional
+from ..node import BaseConditional
 
 class QuantConnectConditional(BaseConditional):
     '''

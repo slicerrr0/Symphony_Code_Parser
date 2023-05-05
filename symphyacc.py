@@ -6,7 +6,6 @@ from src.conditional import Conditional, LeftConditional, RightConditional
 from src.filter import Filter
 from src.group import Group
 from src.indicator import Indicator
-from src.node import Node
 from src.select import Select
 from src.symphony import Symphony
 from src.weight import EqualWeight, SpecifiedWeight, Weight

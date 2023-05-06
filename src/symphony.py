@@ -18,14 +18,6 @@ class Symphony:
         self.branch_just_completed = False
         self.next_weight = None
         self.consecutive_asset_nodes = 1
-
-    def setName(self, name: str) -> None:
-        '''
-        Sets the name of the Symphony to `name`.
-
-        :param name: Name of the symphony.
-        '''
-        self.name = name
     def setRebalanceThreshold(self, threshold: float) -> None:
         '''
         Sets the rebalance threshold for this Symphony.
@@ -36,11 +28,6 @@ class Symphony:
         Sets the rebalance frequency for this Symphony.
         '''
         self.rebalance_frequency = frequency
-    def getName(self) -> str:
-        '''
-        Returns the name of this Symphony.
-        '''
-        return self.name
     def addActiveGroup(self, group: Group) -> None:
         '''
         Adds an instance of `Group` to the container

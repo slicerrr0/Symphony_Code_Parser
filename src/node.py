@@ -3,7 +3,6 @@ Contains the base implementation of classes used
 to represent expressions in an Abstract Syntax Tree.
 '''
 
-
 class Node:
     '''
     Base parent class from which all terminal-encapsulating

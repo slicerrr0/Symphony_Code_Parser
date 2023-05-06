@@ -1,6 +1,6 @@
-from .node import BaseNode
+from .node import Node
 
-class Weight(BaseNode):
+class Weight(Node):
     '''
     Base class for encapsulating 'weight' terminals.
     '''

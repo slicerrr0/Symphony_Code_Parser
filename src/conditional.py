@@ -75,7 +75,7 @@ class Conditional(Node):
         # those properties are not used in the comparison of the left-hand-side and right-hand-side
         # of the conditional
         return re.sub('False|None', '', f'''
-            if {self.lhs_period} {self.lhs_indicator} value of {self.lhs_ticker} is
-            {self.comparator} {self.rhs_period} {self.rhs_indicator} value of {self.rhs_ticker}
+            if {self.lhs_period} {self.lhs_indicator} value of {self.lhs_ticker} is \
+            {self.comparator} {self.rhs_period} {self.rhs_indicator} value of {self.rhs_ticker} \
             {self.rhs_value}
         ''')

@@ -7,7 +7,7 @@ class Filter(Node):
     '''
     Base class for encapsulating 'filter' terminals.
     '''
-    def __init__(self, layer: int, indicator: Indicator, selector: Select, raw_weight: float, *tickers: Asset) -> None:
+    def __init__(self, indicator: Indicator, selector: Select, *tickers: Asset, raw_weight=None, layer=None) -> None:
         '''
         Constructor method for `Filter` class.
 
@@ -32,3 +32,10 @@ class Filter(Node):
         Appends a new Ticker to `self.tickers`.
         '''
         self.tickers.append(ticker)
+    def setRawWeight(self, weight: float) -> None:
+        '''
+        Sets the raw weighting for this filter node.
+
+        :param weight: This filter node's raw weighting.
+        '''
+        self.raw_weight = weight

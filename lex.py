@@ -76,6 +76,12 @@ def t_PERCENT(t):
     t.value = float(t.value[0:len(t.value)-1]) / 100
     return t
 
+# Regular expression for symphony name
+def t_SYMPHONY_NAME(t):
+    r'(?<=defsymphony\s)"[^"]+'
+    # strip leafing '"' from t.value
+    t.value = t.value[1::]
+    return t
 
 # Regular expression for indicator strings
 def t_INDICATOR(t):

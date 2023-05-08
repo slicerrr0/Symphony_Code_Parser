@@ -7,7 +7,7 @@ class Comparator(Node):
     '''
     def __init__(self, comparator: str) -> None:
         '''
-        Constructor method for `BaseComparator` class.
+        Constructor method for `Comparator` class.
 
         :param comparator: String representation of the comparator type.
         '''

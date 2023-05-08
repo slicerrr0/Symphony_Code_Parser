@@ -1,0 +1,546 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ASSET
+    COLON
+    FLOAT
+    GROUP
+    IF
+    LBRACE
+    LBRACKET
+    RBRACE
+    RBRACKET
+    REBALANCE_FREQUENCY
+    REBALANCE_THRESHOLD
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> SYMPHONY expression
+Rule 2     expression -> LPAREN WEIGHT_SPECIFIED PERCENT
+Rule 3     expression -> LPAREN WEIGHT_EQUAL
+Rule 4     expression -> left_conditional right_conditional
+Rule 5     right_conditional -> LPAREN expression RPAREN RPAREN
+Rule 6     right_conditional -> INTEGER RPAREN
+Rule 7     left_conditional -> LPAREN comparator LPAREN expression RPAREN
+Rule 8     expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+Rule 9     expression -> SELECT_TOP INTEGER
+Rule 10    expression -> SELECT_BOTTOM INTEGER
+Rule 11    comparator -> GTE
+Rule 12    comparator -> LTE
+Rule 13    comparator -> GT
+Rule 14    comparator -> LT
+Rule 15    expression -> INDICATOR expression INTEGER
+Rule 16    expression -> INDICATOR
+Rule 17    expression -> QUOTATION TICKER QUOTATION
+
+Terminals, with rules where they appear
+
+ASSET                : 
+COLON                : 
+FILTER               : 8
+FLOAT                : 
+GROUP                : 
+GT                   : 13
+GTE                  : 11
+IF                   : 
+INDICATOR            : 15 16
+INTEGER              : 6 8 9 10 15
+LBRACE               : 
+LBRACKET             : 
+LPAREN               : 2 3 5 7 7 8 8
+LT                   : 14
+LTE                  : 12
+PERCENT              : 2
+QUOTATION            : 17 17
+RBRACE               : 
+RBRACKET             : 
+REBALANCE_FREQUENCY  : 
+REBALANCE_THRESHOLD  : 
+RPAREN               : 5 5 6 7 8 8
+SELECT_BOTTOM        : 10
+SELECT_TOP           : 9
+SYMPHONY             : 1
+TICKER               : 17
+WEIGHT_EQUAL         : 3
+WEIGHT_SPECIFIED     : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparator           : 7
+expression           : 1 5 7 8 8 15 0
+left_conditional     : 4
+right_conditional    : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 1
+    left_conditional               shift and go to state 4
+
+state 1
+
+    (0) S' -> expression .
+
+
+
+state 2
+
+    (1) expression -> SYMPHONY . expression
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 10
+    left_conditional               shift and go to state 4
+
+state 3
+
+    (2) expression -> LPAREN . WEIGHT_SPECIFIED PERCENT
+    (3) expression -> LPAREN . WEIGHT_EQUAL
+    (7) left_conditional -> LPAREN . comparator LPAREN expression RPAREN
+    (11) comparator -> . GTE
+    (12) comparator -> . LTE
+    (13) comparator -> . GT
+    (14) comparator -> . LT
+
+    WEIGHT_SPECIFIED shift and go to state 11
+    WEIGHT_EQUAL    shift and go to state 12
+    GTE             shift and go to state 14
+    LTE             shift and go to state 15
+    GT              shift and go to state 16
+    LT              shift and go to state 17
+
+    comparator                     shift and go to state 13
+
+state 4
+
+    (4) expression -> left_conditional . right_conditional
+    (5) right_conditional -> . LPAREN expression RPAREN RPAREN
+    (6) right_conditional -> . INTEGER RPAREN
+
+    LPAREN          shift and go to state 19
+    INTEGER         shift and go to state 20
+
+    right_conditional              shift and go to state 18
+
+state 5
+
+    (8) expression -> FILTER . LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 21
+
+
+state 6
+
+    (9) expression -> SELECT_TOP . INTEGER
+
+    INTEGER         shift and go to state 22
+
+
+state 7
+
+    (10) expression -> SELECT_BOTTOM . INTEGER
+
+    INTEGER         shift and go to state 23
+
+
+state 8
+
+    (15) expression -> INDICATOR . expression INTEGER
+    (16) expression -> INDICATOR .
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    $end            reduce using rule 16 (expression -> INDICATOR .)
+    INTEGER         reduce using rule 16 (expression -> INDICATOR .)
+    RPAREN          reduce using rule 16 (expression -> INDICATOR .)
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 24
+    left_conditional               shift and go to state 4
+
+state 9
+
+    (17) expression -> QUOTATION . TICKER QUOTATION
+
+    TICKER          shift and go to state 25
+
+
+state 10
+
+    (1) expression -> SYMPHONY expression .
+
+    $end            reduce using rule 1 (expression -> SYMPHONY expression .)
+    INTEGER         reduce using rule 1 (expression -> SYMPHONY expression .)
+    RPAREN          reduce using rule 1 (expression -> SYMPHONY expression .)
+
+
+state 11
+
+    (2) expression -> LPAREN WEIGHT_SPECIFIED . PERCENT
+
+    PERCENT         shift and go to state 26
+
+
+state 12
+
+    (3) expression -> LPAREN WEIGHT_EQUAL .
+
+    $end            reduce using rule 3 (expression -> LPAREN WEIGHT_EQUAL .)
+    INTEGER         reduce using rule 3 (expression -> LPAREN WEIGHT_EQUAL .)
+    RPAREN          reduce using rule 3 (expression -> LPAREN WEIGHT_EQUAL .)
+
+
+state 13
+
+    (7) left_conditional -> LPAREN comparator . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 27
+
+
+state 14
+
+    (11) comparator -> GTE .
+
+    LPAREN          reduce using rule 11 (comparator -> GTE .)
+
+
+state 15
+
+    (12) comparator -> LTE .
+
+    LPAREN          reduce using rule 12 (comparator -> LTE .)
+
+
+state 16
+
+    (13) comparator -> GT .
+
+    LPAREN          reduce using rule 13 (comparator -> GT .)
+
+
+state 17
+
+    (14) comparator -> LT .
+
+    LPAREN          reduce using rule 14 (comparator -> LT .)
+
+
+state 18
+
+    (4) expression -> left_conditional right_conditional .
+
+    $end            reduce using rule 4 (expression -> left_conditional right_conditional .)
+    INTEGER         reduce using rule 4 (expression -> left_conditional right_conditional .)
+    RPAREN          reduce using rule 4 (expression -> left_conditional right_conditional .)
+
+
+state 19
+
+    (5) right_conditional -> LPAREN . expression RPAREN RPAREN
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 28
+    left_conditional               shift and go to state 4
+
+state 20
+
+    (6) right_conditional -> INTEGER . RPAREN
+
+    RPAREN          shift and go to state 29
+
+
+state 21
+
+    (8) expression -> FILTER LPAREN . expression INTEGER RPAREN LPAREN expression RPAREN
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 30
+    left_conditional               shift and go to state 4
+
+state 22
+
+    (9) expression -> SELECT_TOP INTEGER .
+
+    $end            reduce using rule 9 (expression -> SELECT_TOP INTEGER .)
+    INTEGER         reduce using rule 9 (expression -> SELECT_TOP INTEGER .)
+    RPAREN          reduce using rule 9 (expression -> SELECT_TOP INTEGER .)
+
+
+state 23
+
+    (10) expression -> SELECT_BOTTOM INTEGER .
+
+    $end            reduce using rule 10 (expression -> SELECT_BOTTOM INTEGER .)
+    INTEGER         reduce using rule 10 (expression -> SELECT_BOTTOM INTEGER .)
+    RPAREN          reduce using rule 10 (expression -> SELECT_BOTTOM INTEGER .)
+
+
+state 24
+
+    (15) expression -> INDICATOR expression . INTEGER
+
+    INTEGER         shift and go to state 31
+
+
+state 25
+
+    (17) expression -> QUOTATION TICKER . QUOTATION
+
+    QUOTATION       shift and go to state 32
+
+
+state 26
+
+    (2) expression -> LPAREN WEIGHT_SPECIFIED PERCENT .
+
+    $end            reduce using rule 2 (expression -> LPAREN WEIGHT_SPECIFIED PERCENT .)
+    INTEGER         reduce using rule 2 (expression -> LPAREN WEIGHT_SPECIFIED PERCENT .)
+    RPAREN          reduce using rule 2 (expression -> LPAREN WEIGHT_SPECIFIED PERCENT .)
+
+
+state 27
+
+    (7) left_conditional -> LPAREN comparator LPAREN . expression RPAREN
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 33
+    left_conditional               shift and go to state 4
+
+state 28
+
+    (5) right_conditional -> LPAREN expression . RPAREN RPAREN
+
+    RPAREN          shift and go to state 34
+
+
+state 29
+
+    (6) right_conditional -> INTEGER RPAREN .
+
+    $end            reduce using rule 6 (right_conditional -> INTEGER RPAREN .)
+    INTEGER         reduce using rule 6 (right_conditional -> INTEGER RPAREN .)
+    RPAREN          reduce using rule 6 (right_conditional -> INTEGER RPAREN .)
+
+
+state 30
+
+    (8) expression -> FILTER LPAREN expression . INTEGER RPAREN LPAREN expression RPAREN
+
+    INTEGER         shift and go to state 35
+
+
+state 31
+
+    (15) expression -> INDICATOR expression INTEGER .
+
+    $end            reduce using rule 15 (expression -> INDICATOR expression INTEGER .)
+    INTEGER         reduce using rule 15 (expression -> INDICATOR expression INTEGER .)
+    RPAREN          reduce using rule 15 (expression -> INDICATOR expression INTEGER .)
+
+
+state 32
+
+    (17) expression -> QUOTATION TICKER QUOTATION .
+
+    $end            reduce using rule 17 (expression -> QUOTATION TICKER QUOTATION .)
+    INTEGER         reduce using rule 17 (expression -> QUOTATION TICKER QUOTATION .)
+    RPAREN          reduce using rule 17 (expression -> QUOTATION TICKER QUOTATION .)
+
+
+state 33
+
+    (7) left_conditional -> LPAREN comparator LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 36
+
+
+state 34
+
+    (5) right_conditional -> LPAREN expression RPAREN . RPAREN
+
+    RPAREN          shift and go to state 37
+
+
+state 35
+
+    (8) expression -> FILTER LPAREN expression INTEGER . RPAREN LPAREN expression RPAREN
+
+    RPAREN          shift and go to state 38
+
+
+state 36
+
+    (7) left_conditional -> LPAREN comparator LPAREN expression RPAREN .
+
+    LPAREN          reduce using rule 7 (left_conditional -> LPAREN comparator LPAREN expression RPAREN .)
+    INTEGER         reduce using rule 7 (left_conditional -> LPAREN comparator LPAREN expression RPAREN .)
+
+
+state 37
+
+    (5) right_conditional -> LPAREN expression RPAREN RPAREN .
+
+    $end            reduce using rule 5 (right_conditional -> LPAREN expression RPAREN RPAREN .)
+    INTEGER         reduce using rule 5 (right_conditional -> LPAREN expression RPAREN RPAREN .)
+    RPAREN          reduce using rule 5 (right_conditional -> LPAREN expression RPAREN RPAREN .)
+
+
+state 38
+
+    (8) expression -> FILTER LPAREN expression INTEGER RPAREN . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 39
+
+
+state 39
+
+    (8) expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN . expression RPAREN
+    (1) expression -> . SYMPHONY expression
+    (2) expression -> . LPAREN WEIGHT_SPECIFIED PERCENT
+    (3) expression -> . LPAREN WEIGHT_EQUAL
+    (4) expression -> . left_conditional right_conditional
+    (8) expression -> . FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN
+    (9) expression -> . SELECT_TOP INTEGER
+    (10) expression -> . SELECT_BOTTOM INTEGER
+    (15) expression -> . INDICATOR expression INTEGER
+    (16) expression -> . INDICATOR
+    (17) expression -> . QUOTATION TICKER QUOTATION
+    (7) left_conditional -> . LPAREN comparator LPAREN expression RPAREN
+
+    SYMPHONY        shift and go to state 2
+    LPAREN          shift and go to state 3
+    FILTER          shift and go to state 5
+    SELECT_TOP      shift and go to state 6
+    SELECT_BOTTOM   shift and go to state 7
+    INDICATOR       shift and go to state 8
+    QUOTATION       shift and go to state 9
+
+    expression                     shift and go to state 40
+    left_conditional               shift and go to state 4
+
+state 40
+
+    (8) expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 41
+
+
+state 41
+
+    (8) expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN .
+
+    $end            reduce using rule 8 (expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN .)
+    INTEGER         reduce using rule 8 (expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 8 (expression -> FILTER LPAREN expression INTEGER RPAREN LPAREN expression RPAREN .)
+

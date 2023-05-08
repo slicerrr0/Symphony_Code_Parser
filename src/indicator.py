@@ -2,9 +2,9 @@ from .node import Node
 
 class Indicator(Node):
     '''
-    Base class for encapsulating 'indicator` terminals.
+    Base class for encapsulating 'indicator' terminals.
     '''
-    def __init__(self, indicator: str, layer: int, period=None) -> None:
+    def __init__(self, indicator: str, layer=None, period=None) -> None:
         '''
         Constructor method for `Indicator` class.
 

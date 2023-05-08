@@ -11,7 +11,7 @@ class Node:
     def __init__(self, layer: int) -> None:
         self.layer = layer
     def __str__(self) -> str:
-        return
+        raise NotImplementedError
     def getLayer(self) -> int:
         '''
         Returns the layer that this node is situated at within

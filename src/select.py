@@ -5,7 +5,7 @@ class Select(Node):
     '''
     Base class for encapsulating 'select' terminals.
     '''
-    def __init__(self, layer: int, amount: int, reverse=False) -> None:
+    def __init__(self, amount: int, layer=None, reverse=False) -> None:
         '''
         Constructor method for the `Select` class.
 

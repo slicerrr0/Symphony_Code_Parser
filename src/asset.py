@@ -5,7 +5,7 @@ class Asset(Node):
     '''
     Base class for encapsulating 'asset' terminals.
     '''
-    def __init__(self, ticker: str, layer: int, raw_weight: float, group=None) -> None:
+    def __init__(self, ticker: str, layer=None, raw_weight=None, group=None) -> None:
         '''
         Constructor method for the `Asset` class.
         
@@ -27,17 +27,18 @@ class Asset(Node):
         self.group = group
     def __str__(self) -> str:
         return str(self.ticker)
+    def setRawWeight(self, weight: float) -> None:
+        '''
+        Sets the raw weighting for this asset.
+
+        :param weight: Asset's raw weighting.
+        '''
+        self.raw_weight = weight
     def getTicker(self) -> str:
         '''
         Returns the ticker associated with this instance.
         '''
         return self.ticker
-    def getWeight(self) -> float:
-        '''
-        Returns the decimal point weighting associated
-        with this asset node.
-        '''
-        return self.weight
     def getGroup(self) -> None|Group:
         '''
         Returns the group this asset node belongs to.

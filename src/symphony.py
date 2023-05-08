@@ -28,6 +28,7 @@ class Symphony:
         Sets the rebalance frequency for this Symphony.
         '''
         self.rebalance_frequency = frequency
+
     def addActiveGroup(self, group: Group) -> None:
         '''
         Adds an instance of `Group` to the container
@@ -70,6 +71,23 @@ class Symphony:
         stores all nodes that belong to this Symphony as a 
         linear series.
         '''
+        # Check if this node has a 'weight' attribute and, if it does,
+        # if it needs to be set
+        try:
+            if node.raw_weight is None:
+                node.setRawWeight(self.getNextWeight())
+        except AttributeError:
+            pass
+        # Check if this node has a 'layer' attribute and, if it does, 
+        # if it needs to be set
+        if node.layer is None:
+            node.layer = self.getNextLayer()
+
+        
+        # Check if multiple asset nodes are being added consecutively. If so,
+        # then we update and keep a running tally of the number of consecutive asset
+        # nodes so that we can update their weights (also need to account for consecutive 
+        # asset nodes at the end of a symphony with no additional node being added after them)
         if issubclass(self.getPreviousNode(), Asset) and issubclass(node, Asset):
             self.consecutive_asset_nodes += 1
         elif self.consecutive_asset_nodes != 1:
@@ -155,4 +173,18 @@ class Symphony:
         # fall back on (root weights defined at beginning of symphony) Also need to 
         # find a way to correctly process those root weights in case there are multiple
         # with unequal weights (like in failsafe)
-        return Weight.getWeight(layer-1) 
+        return Weight.getWeight(layer-1)
+    def isElseNode(self) -> bool:
+        '''
+        Determines if the next node that is to be added
+        to the Symphony must be an 'else' node. This function
+        should only be called when the yacc parser encounters 
+        a conditional.
+        '''
+        try:
+            previous_node = self.getPreviousNode()
+            if isinstance(previous_node, Conditional):
+                return False
+            return True
+        except IndexError: # No nodes have been added to the Symphony yet
+            return False

@@ -41,8 +41,8 @@ class Weight(Node):
         except KeyError: # No previous weight node exists
             return relative_weight
     
-    # Class methods
-    def __init__(self, layer: int, relative_weight: float, raw_weight: float) -> None:
+    # Instance methods
+    def __init__(self, relative_weight: float, raw_weight=None, layer=None) -> None:
         super(Weight, self).__init__(layer)
         self.relative_weight = relative_weight
         self.raw_weight = raw_weight

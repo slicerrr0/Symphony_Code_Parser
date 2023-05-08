@@ -47,10 +47,10 @@ class Conditional(Node):
     '''
     def __init__(
             self, 
-            layer: int,
             comparator: Comparator, 
             lhs: LeftConditional,
             rhs: RightConditional,
+            layer=None,
             is_else=False
         ) -> None:
         super(Conditional, self).__init__(layer)
